@@ -4,11 +4,11 @@
 
 ## 项目截图
 
-![截图](https://www.youlai.tech/storage/blog/2025/04/30/app.jpg)
+| 模块 <div style="width:60px"/> | 详情 | 模块 <div style="width:60px"/> | 详情 | 模块 <div style="width:60px"/> | 详情 |
+|----------|------|----------|------|----------|------|
+| 登录    | ![移动端登录](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_login.png) | 首页      | ![移动端首页](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_home.png) | 我的      | ![移动端个人中心](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_mine.png) |
+| 个人  | ![移动端个人信息](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_profile.png) | 设置   | ![移动端设置](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_setting.png) | 工作台      | ![移动端工作台](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_work.png) |
 
-## 项目文档
-
-[从0到1构建 UniApp + Vue3 + TypeScript 移动端跨平台开源脚手架](https://juejin.cn/post/7448963032993038376)
 
 ## 项目启动
 
