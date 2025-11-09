@@ -1,14 +1,14 @@
 /**
  * 首页数据配置
  */
-import type { NavItem, VisitStatsVO } from './types';
+import type { NavItem, VisitStatsVO } from "./types";
 
 /**
  * 轮播图列表
  */
 export const SWIPER_LIST = [
   "/static/images/banner01.jpg",
-  "/static/images/banner02.jpg"
+  "/static/images/banner02.jpg",
 ];
 
 /**
@@ -56,7 +56,8 @@ export const DEFAULT_VISIT_STATS: VisitStatsVO = {
 /**
  * 通知公告文本
  */
-export const NOTICE_TEXT = "fastapp 是一个基于 Vue3 + UniApp 的前端模板项目，提供了一套完整的前端解决方案，包括登录、权限、字典、接口请求、状态管理、页面布局、组件封装等功能。";
+export const NOTICE_TEXT =
+  "fastapp 是一个基于 Vue3 + UniApp 的前端模板项目，提供了一套完整的前端解决方案，包括登录、权限、字典、接口请求、状态管理、页面布局、组件封装等功能。";
 
 /**
  * 默认日期范围（天数）
@@ -100,4 +101,3 @@ export const CHART_SERIES_NAMES = {
   UV: "访客数(UV)",
   PV: "浏览量(PV)",
 } as const;
-

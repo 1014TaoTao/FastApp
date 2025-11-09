@@ -19,7 +19,11 @@
             <!-- 头像选择 -->
             <view class="avatar-section">
               <view class="section-title">头像</view>
-              <button class="avatar-button" open-type="chooseAvatar" @chooseavatar="onChooseAvatar">
+              <button
+                class="avatar-button"
+                open-type="chooseAvatar"
+                @chooseavatar="onChooseAvatar"
+              >
                 <image
                   v-if="profileForm.avatar"
                   :src="profileForm.avatar"
@@ -48,7 +52,11 @@
             <!-- 性别选择 -->
             <view class="gender-section">
               <view class="section-title">性别</view>
-              <wd-radio-group v-model="profileForm.gender" shape="button" class="gender-group">
+              <wd-radio-group
+                v-model="profileForm.gender"
+                shape="button"
+                class="gender-group"
+              >
                 <wd-radio :value="1" class="gender-radio">男</wd-radio>
                 <wd-radio :value="2" class="gender-radio">女</wd-radio>
               </wd-radio-group>
@@ -67,7 +75,12 @@
               <wd-icon name="camera" size="40" color="#999" />
               <text class="placeholder-text">点击上传头像</text>
             </view>
-            <image v-else :src="profileForm.avatar" class="avatar-preview" mode="aspectFill" />
+            <image
+              v-else
+              :src="profileForm.avatar"
+              class="avatar-preview"
+              mode="aspectFill"
+            />
           </view>
         </view>
 
@@ -89,7 +102,11 @@
         <!-- 性别选择 -->
         <view class="form-section">
           <view class="section-title">性别</view>
-          <wd-radio-group v-model="profileForm.gender" shape="button" class="gender-group">
+          <wd-radio-group
+            v-model="profileForm.gender"
+            shape="button"
+            class="gender-group"
+          >
             <wd-radio :value="1" class="gender-radio">男</wd-radio>
             <wd-radio :value="2" class="gender-radio">女</wd-radio>
           </wd-radio-group>

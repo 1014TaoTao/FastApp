@@ -30,4 +30,3 @@ export interface Activity {
   label: string;
   value: string;
 }
-

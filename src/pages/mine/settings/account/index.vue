@@ -2,12 +2,20 @@
   <view class="app-container">
     <wd-card custom-style="margin-top: 20rpx" class="theme-card">
       <wd-cell-group border>
-        <wd-cell title="账户密码" label="定期修改密码有助于保护账户安全" value="修改" is-link @click="handleOpenDialog(DialogType.PASSWORD)">
+        <wd-cell
+          title="账户密码"
+          label="定期修改密码有助于保护账户安全"
+          value="修改"
+          is-link
+          @click="handleOpenDialog(DialogType.PASSWORD)"
+        >
           <template #title>
             <text class="theme-text-primary">账户密码</text>
           </template>
           <template #label>
-            <text class="theme-text-secondary">定期修改密码有助于保护账户安全</text>
+            <text class="theme-text-secondary"
+              >定期修改密码有助于保护账户安全</text
+            >
           </template>
           <template #value>
             <text class="theme-text-secondary">修改</text>
@@ -17,8 +25,11 @@
     </wd-card>
 
     <!--用户信息编辑弹出框-->
-    <wd-popup v-model="dialog.visible" position="bottom"
-      custom-style="border-top-left-radius: 16rpx; border-top-right-radius: 16rpx;">
+    <wd-popup
+      v-model="dialog.visible"
+      position="bottom"
+      custom-style="border-top-left-radius: 16rpx; border-top-right-radius: 16rpx;"
+    >
       <view class="popup-header">
         <wd-cell :title="getDialogTitle" center>
           <template #right-icon>
@@ -29,18 +40,48 @@
 
       <wd-divider />
 
-      <wd-form v-if="dialog.type === DialogType.PASSWORD" ref="passwordChangeFormRef" :model="passwordChangeForm"
-        custom-class="edit-form">
+      <wd-form
+        v-if="dialog.type === DialogType.PASSWORD"
+        ref="passwordChangeFormRef"
+        :model="passwordChangeForm"
+        custom-class="edit-form"
+      >
         <wd-cell-group border>
-          <wd-input v-model="passwordChangeForm.old_password" label="原密码" label-width="160rpx" show-password clearable
-            placeholder="请输入原密码" prop="old_password" :rules="rules.oldPassword" />
-          <wd-input v-model="passwordChangeForm.new_password" label="新密码" label-width="160rpx" show-password clearable
-            placeholder="请输入新密码" prop="new_password" :rules="rules.newPassword" />
-          <wd-input v-model="passwordChangeForm.confirm_password" label="确认密码" label-width="160rpx" show-password
-            clearable placeholder="请确认新密码" prop="confirm_password" :rules="rules.confirmPassword" />
+          <wd-input
+            v-model="passwordChangeForm.old_password"
+            label="原密码"
+            label-width="160rpx"
+            show-password
+            clearable
+            placeholder="请输入原密码"
+            prop="old_password"
+            :rules="rules.oldPassword"
+          />
+          <wd-input
+            v-model="passwordChangeForm.new_password"
+            label="新密码"
+            label-width="160rpx"
+            show-password
+            clearable
+            placeholder="请输入新密码"
+            prop="new_password"
+            :rules="rules.newPassword"
+          />
+          <wd-input
+            v-model="passwordChangeForm.confirm_password"
+            label="确认密码"
+            label-width="160rpx"
+            show-password
+            clearable
+            placeholder="请确认新密码"
+            prop="confirm_password"
+            :rules="rules.confirmPassword"
+          />
         </wd-cell-group>
         <view class="p-6">
-          <wd-button type="primary" size="large" block @click="handleSubmit">提交</wd-button>
+          <wd-button type="primary" size="large" block @click="handleSubmit"
+            >提交</wd-button
+          >
         </view>
       </wd-form>
     </wd-popup>
@@ -48,7 +89,6 @@
 </template>
 
 <script setup lang="ts">
-import { onLoad } from "@dcloudio/uni-app";
 import UserAPI, { PasswordChangeForm, UserInfo } from "@/api/user";
 import { useNavigationBar } from "@/composables/useNavigationBar";
 
@@ -73,8 +113,20 @@ const validatorConfirmPassword = (value: string) => {
 const rules = reactive({
   oldPassword: [{ required: true, message: "请填写原密码" }],
   newPassword: [{ required: true, message: "请填写新密码" }],
-  confirmPassword: [{ required: true, message: "请确认密码", validator: validatorConfirmPassword }],
-  mobile: [{ required: true, pattern: /^1[3-9]\d{9}$/, message: "请填写正确的手机号码" }],
+  confirmPassword: [
+    {
+      required: true,
+      message: "请确认密码",
+      validator: validatorConfirmPassword,
+    },
+  ],
+  mobile: [
+    {
+      required: true,
+      pattern: /^1[3-9]\d{9}$/,
+      message: "请填写正确的手机号码",
+    },
+  ],
   code: [{ required: true, message: "请填写验证码" }],
   email: [
     {
@@ -131,7 +183,8 @@ const handleOpenDialog = (type: DialogType) => {
   dialog.visible = true;
   switch (type) {
     case DialogType.PASSWORD:
-      passwordChangeForm.old_password = ""; DialogType.PASSWORD
+      passwordChangeForm.old_password = "";
+      DialogType.PASSWORD;
       passwordChangeForm.new_password = "";
       passwordChangeForm.confirm_password = "";
       break;
@@ -141,16 +194,23 @@ const handleOpenDialog = (type: DialogType) => {
 // 提交表单
 function handleSubmit() {
   if (dialog.type === DialogType.PASSWORD) {
-    passwordChangeFormRef.value.validate().then(({ valid }: { valid: boolean }) => {
-      if (valid) {
-        UserAPI.changeCurrentUserPassword(passwordChangeForm).then(() => {
-          uni.showToast({ title: "密码修改成功", icon: "success" });
-          dialog.visible = false;
-        }).catch((error: any) => {
-          uni.showToast({ title: error?.message || "密码修改失败", icon: "error" });
-        });
-      }
-    });
+    passwordChangeFormRef.value
+      .validate()
+      .then(({ valid }: { valid: boolean }) => {
+        if (valid) {
+          UserAPI.changeCurrentUserPassword(passwordChangeForm)
+            .then(() => {
+              uni.showToast({ title: "密码修改成功", icon: "success" });
+              dialog.visible = false;
+            })
+            .catch((error: any) => {
+              uni.showToast({
+                title: error?.message || "密码修改失败",
+                icon: "error",
+              });
+            });
+        }
+      });
   }
 }
 
@@ -159,11 +219,12 @@ onMounted(() => {
 });
 </script>
 
-<route lang="json">{
+<route lang="json">
+{
   "name": "account",
   "style": {
     "navigationBarTitleText": "账号和安全"
   },
   "layout": "tabbar"
-}</route>
-
+}
+</route>

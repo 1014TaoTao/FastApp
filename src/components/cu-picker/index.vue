@@ -1,5 +1,13 @@
 <template>
-  <wd-picker v-model="selectedValues" :columns="pickerColumns" :display-format="displayFormat" :column-change="handleColumnChange" :label="label" :placeholder="pickerColumns.length ? '请选择' : '加载中...'" :required="required" />
+  <wd-picker
+    v-model="selectedValues"
+    :columns="pickerColumns"
+    :display-format="displayFormat"
+    :column-change="handleColumnChange"
+    :label="label"
+    :placeholder="pickerColumns.length ? '请选择' : '加载中...'"
+    :required="required"
+  />
 </template>
 
 <script setup lang="ts">
@@ -27,14 +35,16 @@ const emits = defineEmits(["update:modelValue"]);
 
 // 定义响应式变量
 const selectedValues = ref<number[] | string[]>([]);
-const pickerColumns = ref<Array<Array<{ label: string; value: string | number }>>>([]);
+const pickerColumns = ref<
+  Array<Array<{ label: string; value: string | number }>>
+>([]);
 
 // 监听 modelValue 的变化，更新 selectedValues
 watch(
   () => props.modelValue,
   (val) => {
     selectedValues.value = val ? findTreePath(val) : [];
-  }
+  },
 );
 
 /**
@@ -50,11 +60,15 @@ const findTreePath = (value: number | string): number[] | string[] => {
   const find = (value: number | string, list: OptionType[]): boolean => {
     for (const item of list) {
       if (item.value === value) {
-        typeof value === "number" ? numberPath.push(value) : stringPath.push(value);
+        typeof value === "number"
+          ? numberPath.push(value)
+          : stringPath.push(value);
         return true;
       }
       if (item.children?.length) {
-        typeof item.value === "number" ? numberPath.push(item.value) : stringPath.push(item.value);
+        typeof item.value === "number"
+          ? numberPath.push(item.value)
+          : stringPath.push(item.value);
         if (find(value, item.children)) return true;
         typeof item.value === "number" ? numberPath.pop() : stringPath.pop();
       }
@@ -72,11 +86,16 @@ const findTreePath = (value: number | string): number[] | string[] => {
  * @param treeData 树形数据
  * @returns Picker 所需的 columns 格式
  */
-const transformTreeToColumns = (treeData: OptionType[]): Array<Array<{ label: string; value: string | number }>> => {
+const transformTreeToColumns = (
+  treeData: OptionType[],
+): Array<Array<{ label: string; value: string | number }>> => {
   const columns: Array<Array<{ label: string; value: string | number }>> = [];
 
   for (let depth = 0; depth <= selectedValues.value.length; depth++) {
-    const currentColumn = treeData.map((node) => ({ label: node.label, value: node.value }));
+    const currentColumn = treeData.map((node) => ({
+      label: node.label,
+      value: node.value,
+    }));
     if (!currentColumn.length) break;
 
     const selectedId = selectedValues.value[depth];
@@ -85,7 +104,9 @@ const transformTreeToColumns = (treeData: OptionType[]): Array<Array<{ label: st
     }
 
     columns.push(currentColumn);
-    const selectedNode = treeData.find((node) => node.value == selectedValues.value[depth]);
+    const selectedNode = treeData.find(
+      (node) => node.value == selectedValues.value[depth],
+    );
     treeData = selectedNode?.children || [];
   }
 
@@ -101,14 +122,20 @@ watch(
   },
   {
     immediate: true,
-  }
+  },
 );
 
 /**
  * 处理列的变化，动态更新后续列的数据
  */
-function handleColumnChange(pickerView: PickerViewInstance, value: Record<string, any> | Record<string, any>[], columnIndex: number, resolve: () => void) {
-  const selectedValue = selectedValues.value[selectedValues.value.length - 1] || undefined;
+function handleColumnChange(
+  pickerView: PickerViewInstance,
+  value: Record<string, any> | Record<string, any>[],
+  columnIndex: number,
+  resolve: () => void,
+) {
+  const selectedValue =
+    selectedValues.value[selectedValues.value.length - 1] || undefined;
   emits("update:modelValue", selectedValue);
 
   const item = Array.isArray(value) ? value[columnIndex] : value.value;
@@ -119,7 +146,11 @@ function handleColumnChange(pickerView: PickerViewInstance, value: Record<string
 /**
  * 动态更新所有后续列的数据
  */
-function updatePickerColumns(pickerView: PickerViewInstance, parentId: string | number, columnIndex: number) {
+function updatePickerColumns(
+  pickerView: PickerViewInstance,
+  parentId: string | number,
+  columnIndex: number,
+) {
   const nextColumnIndex = columnIndex + 1;
   const children = findChildren(parentId, props.data);
 
@@ -132,7 +163,10 @@ function updatePickerColumns(pickerView: PickerViewInstance, parentId: string | 
 /**
  * 根据节点value查找其子节点数据
  */
-function findChildren(parentId: string | number, list: Record<string, any>[]): Record<string, any>[] {
+function findChildren(
+  parentId: string | number,
+  list: Record<string, any>[],
+): Record<string, any>[] {
   for (const item of list) {
     if (item.value === parentId && item.children) {
       return item.children;

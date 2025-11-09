@@ -1,35 +1,84 @@
 <template>
   <view class="app-container">
-    <wd-card v-if="userProfile" custom-style="margin-top: 20rpx" class="theme-card">
+    <wd-card
+      v-if="userProfile"
+      custom-style="margin-top: 20rpx"
+      class="theme-card"
+    >
       <wd-cell-group border>
-        <wd-cell class="avatar-cell" title="头像" center is-link @click="avatarUpload">
+        <wd-cell
+          class="avatar-cell"
+          title="头像"
+          center
+          is-link
+          @click="avatarUpload"
+        >
           <template #title>
             <text class="theme-text-primary">头像</text>
           </template>
           <view class="avatar flex-center">
-            <view v-if="!userProfile.avatar" class="img flex-center" @click="avatarUpload">
-              <wd-icon name="fill-camera" custom-class="img-icon" :color="themeVars.darkColor3" />
+            <view
+              v-if="!userProfile.avatar"
+              class="img flex-center"
+              @click="avatarUpload"
+            >
+              <wd-icon
+                name="fill-camera"
+                custom-class="img-icon"
+                :color="themeVars.darkColor3"
+              />
             </view>
-            <wd-img v-if="userProfile.avatar" round width="80px" height="80px" :src="userProfile.avatar"
-              mode="aspectFit" custom-class="profile-img" @click="avatarUpload" />
+            <wd-img
+              v-if="userProfile.avatar"
+              round
+              width="80px"
+              height="80px"
+              :src="userProfile.avatar"
+              mode="aspectFit"
+              custom-class="profile-img"
+              @click="avatarUpload"
+            />
           </view>
         </wd-cell>
-        <wd-cell title="昵称" :value="userProfile.name" is-link @click="handleOpenDialog('name')">
+        <wd-cell
+          title="昵称"
+          :value="userProfile.name"
+          is-link
+          @click="handleOpenDialog('name')"
+        >
           <template #title>
             <text class="theme-text-primary">昵称</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.name || '未设置' }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.name || "未设置"
+            }}</text>
           </template>
         </wd-cell>
-        <wd-cell title="性别" :value="userProfile.gender === '0' ? '男' : userProfile.gender === '1' ? '女' : '未知'" is-link
-          @click="handleOpenDialog('gender')">
+        <wd-cell
+          title="性别"
+          :value="
+            userProfile.gender === '0'
+              ? '男'
+              : userProfile.gender === '1'
+                ? '女'
+                : '未知'
+          "
+          is-link
+          @click="handleOpenDialog('gender')"
+        >
           <template #title>
             <text class="theme-text-primary">性别</text>
           </template>
           <template #value>
             <text class="theme-text-secondary">
-              {{ userProfile.gender === "0" ? "男" : userProfile.gender === "1" ?"女" : "未知" }}
+              {{
+                userProfile.gender === "0"
+                  ? "男"
+                  : userProfile.gender === "1"
+                    ? "女"
+                    : "未知"
+              }}
             </text>
           </template>
         </wd-cell>
@@ -53,7 +102,10 @@
           <template #title>
             <text class="theme-text-primary">是否超管</text>
           </template>
-          <wd-tag plain :type="userProfile.is_superuser ? 'primary' : 'default'">
+          <wd-tag
+            plain
+            :type="userProfile.is_superuser ? 'primary' : 'default'"
+          >
             {{ userProfile.is_superuser ? "是" : "否" }}
           </wd-tag>
         </wd-cell>
@@ -62,7 +114,9 @@
             <text class="theme-text-primary">手机号</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.mobile || '未绑定' }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.mobile || "未绑定"
+            }}</text>
           </template>
         </wd-cell>
         <wd-cell title="邮箱" :value="userProfile.email">
@@ -70,7 +124,9 @@
             <text class="theme-text-primary">邮箱</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.email || '未绑定' }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.email || "未绑定"
+            }}</text>
           </template>
         </wd-cell>
         <wd-cell title="部门" :value="userProfile.dept_name">
@@ -78,26 +134,40 @@
             <text class="theme-text-primary">部门</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.dept_name || '未分配' }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.dept_name || "未分配"
+            }}</text>
           </template>
         </wd-cell>
-        <wd-cell title="角色" :value="userProfile.roles?.map((item) => item.name).join(', ')">
+        <wd-cell
+          title="角色"
+          :value="userProfile.roles?.map((item) => item.name).join(', ')"
+        >
           <template #title>
             <text class="theme-text-primary">角色</text>
           </template>
           <template #value>
             <text class="theme-text-secondary">
-              {{userProfile.roles?.map((item) => item.name).join(", ") || '未分配'}}
+              {{
+                userProfile.roles?.map((item) => item.name).join(", ") ||
+                "未分配"
+              }}
             </text>
           </template>
         </wd-cell>
-        <wd-cell title="岗位" :value="userProfile.positions?.map((item) => item.name).join(', ')">
+        <wd-cell
+          title="岗位"
+          :value="userProfile.positions?.map((item) => item.name).join(', ')"
+        >
           <template #title>
             <text class="theme-text-primary">岗位</text>
           </template>
           <template #value>
             <text class="theme-text-secondary">
-              {{userProfile.positions?.map((item) => item.name).join(", ") || '未分配'}}
+              {{
+                userProfile.positions?.map((item) => item.name).join(", ") ||
+                "未分配"
+              }}
             </text>
           </template>
         </wd-cell>
@@ -106,7 +176,9 @@
             <text class="theme-text-primary">备注</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.description || '无' }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.description || "无"
+            }}</text>
           </template>
         </wd-cell>
         <wd-cell title="创建日期" :value="userProfile.created_at">
@@ -114,18 +186,27 @@
             <text class="theme-text-primary">创建日期</text>
           </template>
           <template #value>
-            <text class="theme-text-secondary">{{ userProfile.created_at }}</text>
+            <text class="theme-text-secondary">{{
+              userProfile.created_at
+            }}</text>
           </template>
         </wd-cell>
       </wd-cell-group>
     </wd-card>
 
     <!--头像裁剪-->
-    <wd-img-cropper v-model="avatarShow" :img-src="originalSrc" @confirm="handleAvatarConfirm" />
+    <wd-img-cropper
+      v-model="avatarShow"
+      :img-src="originalSrc"
+      @confirm="handleAvatarConfirm"
+    />
 
     <!--用户信息编辑弹出框-->
-    <wd-popup v-model="dialog.visible" position="bottom"
-      custom-style="border-top-left-radius: 16rpx; border-top-right-radius: 16rpx;">
+    <wd-popup
+      v-model="dialog.visible"
+      position="bottom"
+      custom-style="border-top-left-radius: 16rpx; border-top-right-radius: 16rpx;"
+    >
       <view class="popup-header">
         <wd-cell :title="dialog.title" center>
           <template #right-icon>
@@ -136,13 +217,34 @@
 
       <wd-divider />
 
-      <wd-form ref="userProfileFormRef" :model="userProfileForm" custom-class="edit-form">
+      <wd-form
+        ref="userProfileFormRef"
+        :model="userProfileForm"
+        custom-class="edit-form"
+      >
         <wd-cell-group border>
-          <wd-input v-if="dialog.field === 'name'" v-model="userProfileForm.name" label="昵称" label-width="160rpx"
-            placeholder="请输入昵称" prop="name" :rules="rules.name" />
-          <wd-cell v-if="dialog.field === 'gender'" title="性别" title-width="160rpx" center prop="gender"
-            :rules="rules.gender">
-            <wd-radio-group v-model="userProfileForm.gender" shape="button" class="ef-radio-group">
+          <wd-input
+            v-if="dialog.field === 'name'"
+            v-model="userProfileForm.name"
+            label="昵称"
+            label-width="160rpx"
+            placeholder="请输入昵称"
+            prop="name"
+            :rules="rules.name"
+          />
+          <wd-cell
+            v-if="dialog.field === 'gender'"
+            title="性别"
+            title-width="160rpx"
+            center
+            prop="gender"
+            :rules="rules.gender"
+          >
+            <wd-radio-group
+              v-model="userProfileForm.gender"
+              shape="button"
+              class="ef-radio-group"
+            >
               <wd-radio :value="0">男</wd-radio>
               <wd-radio :value="1">女</wd-radio>
               <wd-radio :value="2">未知</wd-radio>
@@ -163,11 +265,15 @@ import FileAPI from "@/api/file";
 import { checkLogin } from "@/utils/auth";
 import type { FormRules } from "wot-design-uni/components/wd-form/types";
 import { useNavigationBar } from "@/composables/useNavigationBar";
+import { useThemeStore } from "@/store/modules/theme.store";
 
 const { initNavigationBar } = useNavigationBar();
 
 // 初始化导航栏样式
 initNavigationBar();
+
+const themeStore = useThemeStore();
+const themeVars = computed(() => themeStore.themeVars);
 
 const originalSrc = ref<string>(""); //选取的原图路径
 const avatarShow = ref<boolean>(false); //显示头像裁剪
@@ -218,7 +324,11 @@ const rules: FormRules = {
   gender: [{ required: true, message: "请选择性别" }],
 };
 
-const dialog = reactive({
+const dialog = reactive<{
+  visible: boolean;
+  title?: string;
+  field?: string;
+}>({
   visible: false,
 });
 
@@ -275,7 +385,9 @@ onLoad(() => {
   if (!checkLogin()) return;
 
   // #ifdef H5
-  document.addEventListener("touchstart", touchstartListener, { passive: false });
+  document.addEventListener("touchstart", touchstartListener, {
+    passive: false,
+  });
   document.addEventListener("touchmove", touchmoveListener, { passive: false });
   // #endif
   loadUserProfile();
@@ -305,10 +417,12 @@ function touchmoveListener(event: TouchEvent) {
 }
 </script>
 
-<route lang="json">{
+<route lang="json">
+{
   "name": "profile",
   "style": {}
-}</route>
+}
+</route>
 
 <style lang="scss" scoped>
 .avatar-cell {

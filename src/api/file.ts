@@ -29,7 +29,9 @@ const FileAPI = {
         },
         formData: {},
         success: (response) => {
-          const resData = JSON.parse(response.data) as ApiResponse<UploadFileResult>;
+          const resData = JSON.parse(
+            response.data,
+          ) as ApiResponse<UploadFileResult>;
           // 业务状态码 0 表示成功
           if (resData.code === ApiCode.SUCCESS) {
             resolve(resData.data);

@@ -1,16 +1,64 @@
 <template>
   <view class="app-container">
     <wd-cell-group>
-      <wd-cell v-if="isLogin" title="个人资料" icon="user" is-link @click="navigateToProfile" />
-      <wd-cell v-if="isLogin" title="账号和安全" icon="secured" is-link @click="navigateToAccount" />
-      <wd-cell title="主题设置" icon="setting1" is-link @click="navigateToTheme" />
-      <wd-cell title="用户协议" icon="user" is-link @click="navigateToUserAgreement" />
-      <wd-cell title="隐私政策" icon="folder" is-link @click="navigateToPrivacy" />
-      <wd-cell title="关于我们" icon="info-circle" is-link @click="navigateToAbout" />
-      <wd-cell title="进入官网" icon="internet" is-link @click="navigateToOfficialWebsite" />
+      <wd-cell
+        v-if="isLogin"
+        title="个人资料"
+        icon="user"
+        is-link
+        @click="navigateToProfile"
+      />
+      <wd-cell
+        v-if="isLogin"
+        title="账号和安全"
+        icon="secured"
+        is-link
+        @click="navigateToAccount"
+      />
+      <wd-cell
+        title="主题设置"
+        icon="setting1"
+        is-link
+        @click="navigateToTheme"
+      />
+      <wd-cell
+        title="用户协议"
+        icon="user"
+        is-link
+        @click="navigateToUserAgreement"
+      />
+      <wd-cell
+        title="隐私政策"
+        icon="folder"
+        is-link
+        @click="navigateToPrivacy"
+      />
+      <wd-cell
+        title="关于我们"
+        icon="info-circle"
+        is-link
+        @click="navigateToAbout"
+      />
+      <wd-cell
+        title="进入官网"
+        icon="internet"
+        is-link
+        @click="navigateToOfficialWebsite"
+      />
       <wd-divider />
-      <wd-cell title="网络测试" icon="wifi" is-link @click="navigateToNetworkTest" />
-      <wd-cell title="清空缓存" icon="delete1" :value="cacheSize" clickable @click="handleClearCache" />
+      <wd-cell
+        title="网络测试"
+        icon="wifi"
+        is-link
+        @click="navigateToNetworkTest"
+      />
+      <wd-cell
+        title="清空缓存"
+        icon="delete1"
+        :value="cacheSize"
+        clickable
+        @click="handleClearCache"
+      />
     </wd-cell-group>
 
     <view v-if="isLogin" class="logout-section">
@@ -112,7 +160,10 @@ const getCacheSize = async () => {
     // #endif
     // #ifdef H5
     cacheSize.value = formatSize(
-      Object.keys(localStorage).reduce((size, key) => size + localStorage[key].length, 0)
+      Object.keys(localStorage).reduce(
+        (size, key) => size + localStorage[key].length,
+        0,
+      ),
     );
     // #endif
     if (!cacheSize.value) {
@@ -220,7 +271,9 @@ onLoad(() => {
 .uni-page-head {
   background-color: var(--card-bg-color) !important;
   border-bottom-color: var(--border-color) !important;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .wot-theme-dark .uni-page-head {
@@ -280,7 +333,9 @@ onLoad(() => {
   border: none;
   border-radius: 45rpx;
   box-shadow: var(--shadow-medium);
-  transition: opacity 0.2s, background-color 0.3s ease;
+  transition:
+    opacity 0.2s,
+    background-color 0.3s ease;
 
   &:active {
     opacity: 0.85;

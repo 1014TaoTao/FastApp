@@ -9,9 +9,9 @@
     <!-- 统计卡片 -->
     <wd-card class="stats-section">
       <view class="stats-grid">
-        <view 
-          v-for="(item, index) in statsData" 
-          :key="index" 
+        <view
+          v-for="(item, index) in statsData"
+          :key="index"
           class="stats-card theme-card"
           @click="handleStatClick(item)"
         >
@@ -19,8 +19,12 @@
             <wd-icon :name="item.icon" size="24" :color="item.color" />
           </view>
           <view class="stats-content">
-            <text class="stats-number theme-text-primary">{{ item.number }}</text>
-            <text class="stats-label theme-text-secondary">{{ item.label }}</text>
+            <text class="stats-number theme-text-primary">{{
+              item.number
+            }}</text>
+            <text class="stats-label theme-text-secondary">{{
+              item.label
+            }}</text>
           </view>
         </view>
       </view>
@@ -29,14 +33,14 @@
     <!-- 快捷操作 -->
     <wd-card title="快捷操作">
       <wd-grid :column="4" border>
-        <wd-grid-item 
-          v-for="(action, index) in quickActions" 
-          :key="index" 
-          :icon="action.icon" 
+        <wd-grid-item
+          v-for="(action, index) in quickActions"
+          :key="index"
+          :icon="action.icon"
           :text="action.name"
           :icon-color="primaryColor"
-          icon-size="20" 
-          custom-class="custom-item" 
+          icon-size="20"
+          custom-class="custom-item"
           @click="handleActionClick(action)"
         />
       </wd-grid>
@@ -45,21 +49,26 @@
     <!-- 最近动态 -->
     <wd-card title="最近动态">
       <wd-cell-group>
-        <wd-cell v-for="(activity, index) in recentActivities" :key="index" :title="activity.title"
-          :label="activity.label" :value="activity.value" custom-class="activity-cell">
+        <wd-cell
+          v-for="(activity, index) in recentActivities"
+          :key="index"
+          :title="activity.title"
+          :label="activity.label"
+          :value="activity.value"
+          custom-class="activity-cell"
+        >
         </wd-cell>
       </wd-cell-group>
     </wd-card>
-
   </view>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 import { useThemeStore } from "@/store/modules/theme.store";
 import { useNavigationBar } from "@/composables/useNavigationBar";
-import type { StatItem, QuickAction, Activity } from './types';
-import { STATS_CONFIG, QUICK_ACTIONS, RECENT_ACTIVITIES } from './data';
+import type { StatItem, QuickAction } from "./types";
+import { STATS_CONFIG, QUICK_ACTIONS, RECENT_ACTIVITIES } from "./data";
 
 const themeStore = useThemeStore();
 const { initNavigationBar } = useNavigationBar();
@@ -74,9 +83,9 @@ const primaryColor = computed(() => themeStore.currentThemeColor.primary);
 // 统计数据 - 使用主题色适配
 const statsData = computed<StatItem[]>(() => {
   const color = primaryColor.value;
-  return STATS_CONFIG.map(item => ({
+  return STATS_CONFIG.map((item) => ({
     ...item,
-    color
+    color,
   }));
 });
 
@@ -91,19 +100,20 @@ const recentActivities = RECENT_ACTIVITIES;
 const handleStatClick = (item: StatItem) => {
   uni.showToast({
     title: `点击了 ${item.label}`,
-    icon: 'none'
+    icon: "none",
   });
 };
 
 const handleActionClick = (action: QuickAction) => {
   uni.showToast({
     title: `跳转到 ${action.name}`,
-    icon: 'none'
+    icon: "none",
   });
 };
 </script>
 
-<route lang="json">{
+<route lang="json">
+{
   "name": "work",
   "style": {
     "navigationStyle": "custom"
@@ -112,16 +122,21 @@ const handleActionClick = (action: QuickAction) => {
   "meta": {
     "requireAuth": true
   }
-}</route>
+}
+</route>
 
 <style lang="scss" scoped>
 .page-header {
   padding: 40rpx 20rpx;
   margin-bottom: 30rpx;
   text-align: center;
-  border-radius: 16rpx;
   // 使用与"我的"页面相同的渐变背景
-  background: linear-gradient(135deg, var(--wot-color-theme, #165dff) 0%, #667eea 100%);
+  background: linear-gradient(
+    135deg,
+    var(--wot-color-theme, #165dff) 0%,
+    #667eea 100%
+  );
+  border-radius: 16rpx;
 
   .page-title {
     display: block;
@@ -140,21 +155,21 @@ const handleActionClick = (action: QuickAction) => {
 
 .stats-section {
   .stats-grid {
-    padding: 12rpx;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12rpx;
+    padding: 12rpx;
   }
 
   .stats-card {
     display: flex;
     align-items: center;
     padding: 30rpx;
+    background: var(--card-bg);
+    border: 1rpx solid var(--border-color);
     border-radius: 16rpx;
     box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    background: var(--card-bg);
-    border: 1rpx solid var(--border-color);
 
     &:active {
       transform: scale(0.95);
@@ -174,10 +189,10 @@ const handleActionClick = (action: QuickAction) => {
 
       .stats-number {
         display: block;
+        margin-bottom: 4rpx;
         font-size: 32rpx;
         font-weight: bold;
         color: var(--text-color);
-        margin-bottom: 4rpx;
       }
 
       .stats-label {
@@ -187,5 +202,4 @@ const handleActionClick = (action: QuickAction) => {
     }
   }
 }
-
 </style>

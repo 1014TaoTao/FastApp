@@ -17,7 +17,17 @@
  */
 
 // 主题颜色配置：如每个图表类型需要不同主题，请在对应图表类型上更改color属性
-const color = ["#1890FF", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452", "#9A60B4", "#ea7ccc"];
+const color = [
+  "#1890FF",
+  "#91CB74",
+  "#FAC858",
+  "#EE6666",
+  "#73C0DE",
+  "#3CA272",
+  "#FC8452",
+  "#9A60B4",
+  "#ea7ccc",
+];
 
 //事件转换函数，主要用作格式化x轴为时间轴，根据需求自行修改
 const formatDateTime = (timeStamp, returnType) => {
@@ -51,11 +61,66 @@ const formatDateTime = (timeStamp, returnType) => {
 
 const cfu = {
   //demotype为自定义图表类型，一般不需要自定义图表类型，只需要改根节点上对应的类型即可
-  type: ["pie", "ring", "rose", "word", "funnel", "map", "arcbar", "line", "column", "mount", "bar", "area", "radar", "gauge", "candle", "mix", "tline", "tarea", "scatter", "bubble", "demotype"],
-  range: ["饼状图", "圆环图", "玫瑰图", "词云图", "漏斗图", "地图", "圆弧进度条", "折线图", "柱状图", "山峰图", "条状图", "区域图", "雷达图", "仪表盘", "K线图", "混合图", "时间轴折线", "时间轴区域", "散点图", "气泡图", "自定义类型"],
+  type: [
+    "pie",
+    "ring",
+    "rose",
+    "word",
+    "funnel",
+    "map",
+    "arcbar",
+    "line",
+    "column",
+    "mount",
+    "bar",
+    "area",
+    "radar",
+    "gauge",
+    "candle",
+    "mix",
+    "tline",
+    "tarea",
+    "scatter",
+    "bubble",
+    "demotype",
+  ],
+  range: [
+    "饼状图",
+    "圆环图",
+    "玫瑰图",
+    "词云图",
+    "漏斗图",
+    "地图",
+    "圆弧进度条",
+    "折线图",
+    "柱状图",
+    "山峰图",
+    "条状图",
+    "区域图",
+    "雷达图",
+    "仪表盘",
+    "K线图",
+    "混合图",
+    "时间轴折线",
+    "时间轴区域",
+    "散点图",
+    "气泡图",
+    "自定义类型",
+  ],
   //增加自定义图表类型，如果需要categories，请在这里加入您的图表类型，例如最后的"demotype"
   //自定义类型时需要注意"tline","tarea","scatter","bubble"等时间轴（矢量x轴）类图表，没有categories，不需要加入categories
-  categories: ["line", "column", "mount", "bar", "area", "radar", "gauge", "candle", "mix", "demotype"],
+  categories: [
+    "line",
+    "column",
+    "mount",
+    "bar",
+    "area",
+    "radar",
+    "gauge",
+    "candle",
+    "mix",
+    "demotype",
+  ],
   //instance为实例变量承载属性，不要删除
   instance: {},
   //option为opts及eopts承载属性，不要删除

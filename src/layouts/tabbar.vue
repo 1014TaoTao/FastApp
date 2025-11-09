@@ -1,10 +1,25 @@
 <template>
-  <wd-config-provider :theme-vars="themeVars" :custom-class="`page-wrapper ${theme}`" :theme="theme">
+  <wd-config-provider
+    :theme-vars="themeVars"
+    :custom-class="`page-wrapper ${theme}`"
+    :theme="theme"
+  >
     <slot />
-    <wd-tabbar :model-value="activeTabbar" placeholder bordered safe-area-inset-bottom fixed
-      @change="handleTabbarChange">
-      <wd-tabbar-item v-for="(item, index) in tabbarList" :key="index" :name="item.name" :title="item.title"
-        :icon="item.icon" />
+    <wd-tabbar
+      :model-value="activeTabbar"
+      placeholder
+      bordered
+      safe-area-inset-bottom
+      fixed
+      @change="handleTabbarChange"
+    >
+      <wd-tabbar-item
+        v-for="(item, index) in tabbarList"
+        :key="index"
+        :name="item.name"
+        :title="item.title"
+        :icon="item.icon"
+      />
     </wd-tabbar>
     <wd-notify />
     <wd-toast />

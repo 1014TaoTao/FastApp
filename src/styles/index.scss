@@ -346,7 +346,9 @@ body,
 .uni-page-head__btn-left i {
   color: var(--text-color) !important;
   fill: var(--text-color) !important;
-  transition: color 0.3s ease, fill 0.3s ease;
+  transition:
+    color 0.3s ease,
+    fill 0.3s ease;
 }
 
 .wot-theme-dark .uni-page-head__left .uni-icon,

@@ -19,13 +19,43 @@
 // 通用配置项
 
 // 主题颜色配置：如每个图表类型需要不同主题，请在对应图表类型上更改color属性
-const color = ["#1890FF", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452", "#9A60B4", "#ea7ccc"];
+const color = [
+  "#1890FF",
+  "#91CB74",
+  "#FAC858",
+  "#EE6666",
+  "#73C0DE",
+  "#3CA272",
+  "#FC8452",
+  "#9A60B4",
+  "#ea7ccc",
+];
 
 const cfe = {
   //demotype为自定义图表类型
-  type: ["pie", "ring", "rose", "funnel", "line", "column", "area", "radar", "gauge", "candle", "demotype"],
+  type: [
+    "pie",
+    "ring",
+    "rose",
+    "funnel",
+    "line",
+    "column",
+    "area",
+    "radar",
+    "gauge",
+    "candle",
+    "demotype",
+  ],
   //增加自定义图表类型，如果需要categories，请在这里加入您的图表类型例如最后的"demotype"
-  categories: ["line", "column", "area", "radar", "gauge", "candle", "demotype"],
+  categories: [
+    "line",
+    "column",
+    "area",
+    "radar",
+    "gauge",
+    "candle",
+    "demotype",
+  ],
   //instance为实例变量承载属性，option为eopts承载属性，不要删除
   instance: {},
   option: {},
@@ -46,7 +76,8 @@ const cfe = {
         // #endif
 
         // #ifdef APP-PLUS
-        result += "<br/>" + res[i].marker + res[i].seriesName + "：" + value + " 万元";
+        result +=
+          "<br/>" + res[i].marker + res[i].seriesName + "：" + value + " 万元";
         // #endif
       }
       return result;

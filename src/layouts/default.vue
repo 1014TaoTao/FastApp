@@ -4,11 +4,14 @@ import { useThemeStore } from "@/store/modules/theme.store";
 const themeStore = useThemeStore();
 const theme = computed(() => themeStore.theme);
 const themeVars = computed(() => themeStore.themeVars);
-
 </script>
 
 <template>
-  <wd-config-provider :theme-vars="themeVars" :theme="theme" :custom-class="`page-wrapper ${theme}`">
+  <wd-config-provider
+    :theme-vars="themeVars"
+    :theme="theme"
+    :custom-class="`page-wrapper ${theme}`"
+  >
     <slot />
     <wd-notify />
     <wd-toast />

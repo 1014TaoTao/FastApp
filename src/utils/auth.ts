@@ -1,6 +1,10 @@
 import { useUserStore } from "@/store";
 import { Storage } from "./storage";
-import { APP_ACCESS_TOKEN_KEY, APP_REFRESH_TOKEN_KEY, APP_USER_INFO } from "@/constants";
+import {
+  APP_ACCESS_TOKEN_KEY,
+  APP_REFRESH_TOKEN_KEY,
+  APP_USER_INFO,
+} from "@/constants";
 
 // 获取访问 token
 export function getAccessToken(): string | null {
@@ -72,7 +76,9 @@ export function checkLogin(silent: boolean = false): boolean {
           // 处理页面参数 - 使用类型断言
           const pageOptions = (currentPage as any).options;
           if (pageOptions && Object.keys(pageOptions).length > 0) {
-            const params = new URLSearchParams(pageOptions as Record<string, string>);
+            const params = new URLSearchParams(
+              pageOptions as Record<string, string>,
+            );
             currentPagePath += `?${params.toString()}`;
           }
         }

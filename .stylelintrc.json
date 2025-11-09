@@ -1,0 +1,45 @@
+{
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-recommended-scss",
+    "stylelint-config-recommended-vue",
+    "stylelint-config-recess-order",
+    "stylelint-config-html",
+    "stylelint-prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "unit-no-unknown": [
+      true,
+      { "ignoreUnits": ["rpx"] }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["deep", "global"] }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      { "ignoreTypes": ["page", "view", "text", "image", "button"] }
+    ],
+    "declaration-property-value-no-unknown": null,
+    "no-descending-specificity": null,
+    "no-empty-source": null
+  },
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json",
+    "**/*.wxml",
+    "**/*.wxss",
+    "**/*.nvue",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/unpackage/**"
+  ],
+  "overrides": [
+    {
+      "files": ["*.vue", "**/*.vue", "*.html", "**/*.html"],
+      "customSyntax": "postcss-html"
+    }
+  ]
+}

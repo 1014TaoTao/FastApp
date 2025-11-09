@@ -28,4 +28,3 @@ export interface GuideStep {
   desc: string;
   icon?: string;
 }
-

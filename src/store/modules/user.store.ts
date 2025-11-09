@@ -1,14 +1,28 @@
 import { defineStore } from "pinia";
 import UserAPI, { type UserInfo } from "@/api/user";
-import AuthAPI, { type LoginFormData, type LoginResult, type LogoutBody } from "@/api/auth";
-import { getAccessToken, setAccessToken, setRefreshToken, clearAll, getUserInfo, setUserInfo } from "@/utils/auth";
+import AuthAPI, {
+  type LoginFormData,
+  type LoginResult,
+  type LogoutBody,
+} from "@/api/auth";
+import {
+  getAccessToken,
+  setAccessToken,
+  setRefreshToken,
+  clearAll,
+  getUserInfo,
+  setUserInfo,
+} from "@/utils/auth";
 
 export const useUserStore = defineStore("appUserInfo", () => {
   const userInfo = ref<UserInfo | undefined>(getUserInfo());
   const isLoggingIn = ref(false);
 
   // 统一的登录处理方法
-  const handleLogin = async (loginFn: () => Promise<LoginResult>, loginType: string) => {
+  const handleLogin = async (
+    loginFn: () => Promise<LoginResult>,
+    loginType: string,
+  ) => {
     if (isLoggingIn.value) return;
 
     isLoggingIn.value = true;

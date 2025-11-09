@@ -1,5 +1,8 @@
 <template>
-  <view :key="renderKey" class="app-container dark:text-[var(--wot-dark-color)]">
+  <view
+    :key="renderKey"
+    class="app-container dark:text-[var(--wot-dark-color)]"
+  >
     <!-- 页面标题 -->
     <view class="page-header" :style="pageHeaderStyle">
       <text class="page-title">主题设置</text>
@@ -9,7 +12,11 @@
     <!-- 暗黑模式设置 -->
     <wd-card title="外观模式">
       <wd-cell title="暗黑模式" :value="isDarkMode ? '已开启' : '已关闭'">
-        <wd-switch v-model="isDarkMode" custom-class="theme-switch" @change="handleToggleDarkMode" />
+        <wd-switch
+          v-model="isDarkMode"
+          custom-class="theme-switch"
+          @change="handleToggleDarkMode"
+        />
       </wd-cell>
     </wd-card>
 
@@ -18,13 +25,23 @@
       <!-- 预设颜色选择 -->
       <view class="color-section">
         <view :key="renderKey" class="color-grid">
-          <view v-for="(color, index) in themeOptions" 
-            :key="`${index}-${renderKey}`" 
-            class="color-item" 
-            :class="{ active: isActiveColor(color) }" 
-            @click="selectColor(color)">
-            <view class="color-preview" :style="{ backgroundColor: color.primary }">
-              <wd-icon v-if="isActiveColor(color)" name="check" size="20" :color="'var(--text-color-inverse)'" />
+          <view
+            v-for="(color, index) in themeOptions"
+            :key="`${index}-${renderKey}`"
+            class="color-item"
+            :class="{ active: isActiveColor(color) }"
+            @click="selectColor(color)"
+          >
+            <view
+              class="color-preview"
+              :style="{ backgroundColor: color.primary }"
+            >
+              <wd-icon
+                v-if="isActiveColor(color)"
+                name="check"
+                size="20"
+                :color="'var(--text-color-inverse)'"
+              />
             </view>
             <text class="color-name">{{ color.name }}</text>
           </view>
@@ -34,9 +51,7 @@
 
     <!-- 操作按钮 -->
     <view class="action-section">
-      <wd-button block @click="resetTheme">
-        重置为默认主题
-      </wd-button>
+      <wd-button block @click="resetTheme"> 重置为默认主题 </wd-button>
     </view>
   </view>
 </template>
@@ -59,15 +74,15 @@ const pageHeaderStyle = computed(() => {
   // 计算深色变体（变暗约 0.6 倍）
   const primaryColorDark = adjustColorBrightness(primaryColor, 0.6);
   return {
-    background: `linear-gradient(135deg, ${primaryColor} 0%, ${primaryColorDark} 100%)`
+    background: `linear-gradient(135deg, ${primaryColor} 0%, ${primaryColorDark} 100%)`,
   };
 });
 
 const isDarkMode = computed({
   get: () => themeStore.isDark,
   set: (value) => {
-    themeStore.toggleTheme(value ? 'dark' : 'light');
-  }
+    themeStore.toggleTheme(value ? "dark" : "light");
+  },
 });
 const themeOptions = themeStore.themeColorOptions;
 
@@ -75,7 +90,7 @@ const themeOptions = themeStore.themeColorOptions;
 const renderKey = ref(0);
 
 // 检查颜色是否为当前选中颜色
-const isActiveColor = (color: typeof themeOptions[0]): boolean => {
+const isActiveColor = (color: (typeof themeOptions)[0]): boolean => {
   const currentColor = themeStore.currentThemeColor.primary.toLowerCase();
   const compareColor = color.primary.toLowerCase();
   return currentColor === compareColor;
@@ -92,12 +107,12 @@ const handleToggleDarkMode = (value: boolean) => {
 };
 
 // 选择主题色
-const selectColor = (color: typeof themeOptions[0]) => {
+const selectColor = (color: (typeof themeOptions)[0]) => {
   themeStore.setCurrentThemeColor(color);
-  
+
   // 强制重新渲染所有组件
   renderKey.value++;
-  
+
   uni.showToast({ title: "主题色已更新", icon: "success", duration: 1000 });
 };
 
@@ -116,33 +131,45 @@ const resetTheme = () => {
 };
 
 // 监听主题变化，强制更新页面
-watch(() => themeStore.isDark, () => {
-  // 主题变化时强制重新渲染
-  renderKey.value++;
-});
+watch(
+  () => themeStore.isDark,
+  () => {
+    // 主题变化时强制重新渲染
+    renderKey.value++;
+  },
+);
 
 // 监听主题色变化
-watch(() => themeStore.currentThemeColor, () => {
-  // 强制重新渲染以更新选中状态
-  renderKey.value++;
-}, { deep: true });
+watch(
+  () => themeStore.currentThemeColor,
+  () => {
+    // 强制重新渲染以更新选中状态
+    renderKey.value++;
+  },
+  { deep: true },
+);
 
 // 监听主题色变量变化
-watch(() => themeStore.themeVars.colorTheme, () => {
-  // 强制重新渲染以更新图标颜色
-  renderKey.value++;
-  
-  // 通知其他页面主题色已变化
-  uni.$emit('global-theme-color-change', themeStore.themeVars.colorTheme);
-});
+watch(
+  () => themeStore.themeVars.colorTheme,
+  () => {
+    // 强制重新渲染以更新图标颜色
+    renderKey.value++;
+
+    // 通知其他页面主题色已变化
+    uni.$emit("global-theme-color-change", themeStore.themeVars.colorTheme);
+  },
+);
 </script>
 
-<route lang="json">{
+<route lang="json">
+{
   "name": "theme",
   "style": {
     "navigationBarTitleText": "主题设置"
   }
-}</route>
+}
+</route>
 
 <style lang="scss" scoped>
 // 基础布局

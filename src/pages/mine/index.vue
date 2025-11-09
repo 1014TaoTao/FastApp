@@ -5,31 +5,44 @@
       <view class="blur-bg"></view>
       <view class="user-info">
         <view class="avatar-container" @click="navigateToProfile">
-          <image class="avatar" :src="isLogin ? userInfo!.avatar : defaultAvatar" mode="aspectFill" />
+          <image
+            class="avatar"
+            :src="isLogin ? userInfo!.avatar : defaultAvatar"
+            mode="aspectFill"
+          />
         </view>
         <view class="user-details">
           <block v-if="isLogin">
-            <view class="nickname theme-text-primary">{{ userInfo?.name || "匿名用户" }}</view>
-            <view class="user-id theme-text-secondary">ID: {{ userInfo?.username || "0000000" }}</view>
+            <view class="nickname theme-text-primary">{{
+              userInfo?.name || "匿名用户"
+            }}</view>
+            <view class="user-id theme-text-secondary"
+              >ID: {{ userInfo?.username || "0000000" }}</view
+            >
           </block>
           <block v-else>
             <view class="login-prompt text-white">立即登录获取更多功能</view>
-            <wd-button custom-class="btn-login" size="small" type="primary"
-              @click="navigateToLoginPage">登录/注册</wd-button>
+            <wd-button
+              custom-class="btn-login"
+              size="small"
+              type="primary"
+              @click="navigateToLoginPage"
+              >登录/注册</wd-button
+            >
           </block>
         </view>
         <view class="actions">
-          <view 
-            class="action-btn action-btn-settings" 
+          <view
+            class="action-btn action-btn-settings"
             @click="handleSettingsClick"
             @tap="handleSettingsClick"
           >
             <text class="debug-text">⚙️</text>
             <wd-icon name="setting1" size="22" color="#a0a0a0" />
           </view>
-          <view 
-            v-if="isLogin" 
-            class="action-btn action-btn-messages" 
+          <view
+            v-if="isLogin"
+            class="action-btn action-btn-messages"
             @click="handleMessagesClick"
             @tap="handleMessagesClick"
           >
@@ -64,7 +77,9 @@
       <view class="card-header">
         <view class="flex-start">
           <wd-icon name="tools" size="18" :color="themeVars.colorTheme" />
-          <text class="theme-text-secondary ml-12rpx text-28rpx font-600">常用工具</text>
+          <text class="theme-text-secondary ml-12rpx text-28rpx font-600"
+            >常用工具</text
+          >
         </view>
       </view>
       <view class="flex flex-wrap p-20rpx pt-20rpx pb-10rpx">
@@ -76,19 +91,31 @@
         </view>
         <view class="tool-item" @click="navigateToFAQ">
           <view class="tool-icon">
-            <wd-icon name="help-circle" size="24" :color="currentThemeColor.primary" />
+            <wd-icon
+              name="help-circle"
+              size="24"
+              :color="currentThemeColor.primary"
+            />
           </view>
           <view class="theme-text-secondary text-24rpx">常见问题</view>
         </view>
         <view class="tool-item" @click="handleQuestionFeedback">
           <view class="tool-icon">
-            <wd-icon name="check-circle" size="24" :color="currentThemeColor.primary" />
+            <wd-icon
+              name="check-circle"
+              size="24"
+              :color="currentThemeColor.primary"
+            />
           </view>
           <view class="theme-text-secondary text-24rpx">问题反馈</view>
         </view>
         <view class="tool-item" @click="navigateToAbout">
           <view class="tool-icon">
-            <wd-icon name="info-circle" size="24" :color="currentThemeColor.primary" />
+            <wd-icon
+              name="info-circle"
+              size="24"
+              :color="currentThemeColor.primary"
+            />
           </view>
           <view class="theme-text-secondary text-24rpx">关于我们</view>
         </view>
@@ -100,42 +127,77 @@
       <view class="card-header">
         <view class="flex-start">
           <wd-icon name="star" size="18" :color="currentThemeColor.primary" />
-          <text class="theme-text-secondary ml-12rpx text-28rpx font-600">推荐服务</text>
+          <text class="theme-text-secondary ml-12rpx text-28rpx font-600"
+            >推荐服务</text
+          >
         </view>
       </view>
       <view>
-        <view class="service-item" @click="navigateToSection('services', 'vip')">
+        <view
+          class="service-item"
+          @click="navigateToSection('services', 'vip')"
+        >
           <view class="flex-start">
             <view class="service-icon">
-              <wd-icon name="dong" size="22" :color="currentThemeColor.primary" />
+              <wd-icon
+                name="dong"
+                size="22"
+                :color="currentThemeColor.primary"
+              />
             </view>
             <view>
-              <view class="theme-text-secondary text-28rpx font-500">会员中心</view>
+              <view class="theme-text-secondary text-28rpx font-500"
+                >会员中心</view
+              >
               <view class="mt-8rpx text-24rpx text-gray-500">解锁更多特权</view>
             </view>
           </view>
           <wd-icon name="arrow-right" size="14" />
         </view>
-        <view class="service-item" @click="navigateToSection('services', 'coupon')">
+        <view
+          class="service-item"
+          @click="navigateToSection('services', 'coupon')"
+        >
           <view class="flex-start">
             <view class="service-icon">
-              <wd-icon name="discount" size="22" :color="currentThemeColor.primary" />
+              <wd-icon
+                name="discount"
+                size="22"
+                :color="currentThemeColor.primary"
+              />
             </view>
             <view>
-              <view class="theme-text-secondary text-28rpx font-500 text-28rpx font-500">优惠券</view>
-              <view class="mt-8rpx text-24rpx text-gray-500">查看我的优惠券</view>
+              <view
+                class="theme-text-secondary text-28rpx font-500 text-28rpx font-500"
+                >优惠券</view
+              >
+              <view class="mt-8rpx text-24rpx text-gray-500"
+                >查看我的优惠券</view
+              >
             </view>
           </view>
           <wd-icon name="arrow-right" size="14" />
         </view>
-        <view class="service-item service-item-last" @click="navigateToSection('services', 'invite')">
+        <view
+          class="service-item service-item-last"
+          @click="navigateToSection('services', 'invite')"
+        >
           <view class="flex-start">
             <view class="service-icon">
-              <wd-icon name="share" size="22" :color="currentThemeColor.primary" />
+              <wd-icon
+                name="share"
+                size="22"
+                :color="currentThemeColor.primary"
+              />
             </view>
             <view>
-              <view class="theme-text-secondary text-28rpx font-500 text-28rpx font-500">邀请有礼</view>
-              <view class="mt-8rpx text-24rpx text-gray-500">邀请好友得奖励</view>
+              <view
+                class="theme-text-secondary text-28rpx font-500 text-28rpx font-500"
+                >邀请有礼</view
+              >
+              <view class="mt-8rpx text-24rpx text-gray-500"
+                >邀请好友得奖励</view
+              >
             </view>
           </view>
           <wd-icon name="arrow-right" size="14" />
@@ -145,7 +207,9 @@
 
     <!-- 退出登录按钮 -->
     <view v-if="isLogin" class="p-30rpx">
-      <wd-button custom-class="logout-button" plain @click="handleLogout">退出登录</wd-button>
+      <wd-button custom-class="logout-button" plain @click="handleLogout"
+        >退出登录</wd-button
+      >
     </view>
     <wd-toast />
   </view>
@@ -170,20 +234,20 @@ const isThemeReady = ref(true); // 立即设置为 true，因为 themeVars compu
 
 // 默认主题变量对象
 const defaultThemeVars = {
-  darkColor3: '#a0a0a0',
-  darkColor: '#ffffff',
-  darkColor2: '#e0e0e0',
-  colorTheme: '#4D7FFF',
-  colorBg: '#f8f8f8',
-  colorTitle: '#1d2129',
-  colorContent: '#4e5969',
-  colorSecondary: '#86909c',
-  colorBorder: '#e5e6eb',
-  colorBorderLight: '#f2f3f5',
-  cardBg: '#ffffff',
-  cardTitleColor: '#1d2129',
-  cardContentColor: '#4e5969',
-  cardContentBorderColor: '#e5e6eb',
+  darkColor3: "#a0a0a0",
+  darkColor: "#ffffff",
+  darkColor2: "#e0e0e0",
+  colorTheme: "#4D7FFF",
+  colorBg: "#f8f8f8",
+  colorTitle: "#1d2129",
+  colorContent: "#4e5969",
+  colorSecondary: "#86909c",
+  colorBorder: "#e5e6eb",
+  colorBorderLight: "#f2f3f5",
+  cardBg: "#ffffff",
+  cardTitleColor: "#1d2129",
+  cardContentColor: "#4e5969",
+  cardContentBorderColor: "#e5e6eb",
 };
 
 // 主题变量，确保始终有默认值
@@ -201,25 +265,20 @@ const themeVars = computed(() => {
       darkColor3: vars.darkColor3 || defaultThemeVars.darkColor3,
       colorTheme: vars.colorTheme || defaultThemeVars.colorTheme,
     };
-  } catch (error) {
+  } catch {
     // 静默失败，使用默认值
     return defaultThemeVars;
   }
-});
-
-// 图标颜色，确保始终有值
-const iconColor = computed(() => {
-  return themeVars.value?.darkColor3 || '#a0a0a0';
 });
 
 // 修复: 直接返回主题色对象，确保可以访问primary属性
 const currentThemeColor = computed(() => {
   try {
     const color = themeStore?.currentThemeColor;
-    return color || { primary: '#4D7FFF', name: '默认蓝', value: 'blue' };
-  } catch (error) {
+    return color || { primary: "#4D7FFF", name: "默认蓝", value: "blue" };
+  } catch {
     // 静默失败，使用默认值
-    return { primary: '#4D7FFF', name: '默认蓝', value: 'blue' };
+    return { primary: "#4D7FFF", name: "默认蓝", value: "blue" };
   }
 });
 
@@ -232,7 +291,7 @@ onMounted(() => {
     } else if (!themeStore.themeVars.darkColor3) {
       themeStore.initTheme();
     }
-  } catch (error) {
+  } catch {
     // 即使初始化失败，themeVars computed 也会返回默认值
   }
 });
@@ -250,11 +309,11 @@ const handleThemeColorChange = (_color: string) => {
 };
 
 onMounted(() => {
-  uni.$on('global-theme-color-change', handleThemeColorChange);
+  uni.$on("global-theme-color-change", handleThemeColorChange);
 });
 
 onUnmounted(() => {
-  uni.$off('global-theme-color-change', handleThemeColorChange);
+  uni.$off("global-theme-color-change", handleThemeColorChange);
 });
 
 // 登录
@@ -263,7 +322,10 @@ const navigateToLoginPage = () => {
   const currentPage = pages[pages.length - 1];
   const currentPagePath = `/${currentPage.route}`;
 
-  router.push({ path: "/pages/login/index", query: { redirect: currentPagePath } });
+  router.push({
+    path: "/pages/login/index",
+    query: { redirect: currentPagePath },
+  });
 };
 
 // 退出登录
@@ -320,7 +382,7 @@ const handleMessagesClick = (e?: any) => {
     e.stopPropagation();
     e.preventDefault();
   }
-  navigateToSection('messages');
+  navigateToSection("messages");
 };
 
 // 问题反馈
@@ -373,21 +435,23 @@ const loadUserInfo = async () => {
 // 监听用户信息变化，确保数据及时更新
 watch(
   () => userInfo.value,
-  () => { },
+  () => {},
   {
     deep: true,
     immediate: true,
-  }
+  },
 );
 </script>
 
-<route lang="json">{
+<route lang="json">
+{
   "name": "mine",
   "style": {
     "navigationStyle": "custom"
   },
   "layout": "tabbar"
-}</route>
+}
+</route>
 
 <style lang="scss" scoped>
 // 用户信息卡片
@@ -406,7 +470,11 @@ watch(
     left: 0;
     z-index: 0;
     height: 240rpx;
-    background: linear-gradient(135deg, var(--wot-color-theme, #165dff) 0%, #667eea 100%);
+    background: linear-gradient(
+      135deg,
+      var(--wot-color-theme, #165dff) 0%,
+      #667eea 100%
+    );
   }
 
   .user-info {
@@ -448,49 +516,49 @@ watch(
     }
 
     .actions {
-      display: flex;
       position: relative;
       z-index: 100;
+      display: flex;
       flex-shrink: 0;
 
       .action-btn {
         position: relative;
+        z-index: 101;
         display: flex !important;
         align-items: center;
         justify-content: center;
         width: 70rpx;
-        height: 70rpx;
         min-width: 70rpx;
+        height: 70rpx;
         min-height: 70rpx;
         margin-left: 16rpx;
+        pointer-events: auto;
+        cursor: pointer;
         background-color: rgba(255, 255, 255, 0.9) !important;
         border-radius: 50%;
         box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
-        cursor: pointer;
-        z-index: 101;
-        pointer-events: auto;
-        
+
         .debug-text {
           position: absolute;
-          font-size: 20rpx;
           z-index: 103;
+          font-size: 20rpx;
         }
-        
+
         // 确保图标可见
         :deep(.wd-icon) {
-          display: block !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-          color: #a0a0a0 !important;
           position: relative;
           z-index: 102;
+          display: block !important;
+          color: #a0a0a0 !important;
+          visibility: visible !important;
+          opacity: 1 !important;
         }
-        
+
         &:active {
           opacity: 0.7;
           transform: scale(0.95);
         }
-        
+
         // 设置按钮特殊样式
         &.action-btn-settings {
           z-index: 102;
@@ -621,7 +689,6 @@ watch(
 
 // 暗色模式适配
 :deep(.dark) {
-
   .tool-icon,
   .service-icon,
   .service-item:active {

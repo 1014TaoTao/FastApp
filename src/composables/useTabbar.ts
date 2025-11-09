@@ -20,12 +20,12 @@ export function useTabbar() {
   const tabbarList = computed(() => {
     // 检查用户登录状态
     const loggedIn = isLoggedIn();
-    
+
     // 未登录时过滤掉工作台项
     if (!loggedIn) {
-      return tabbarItems.value.filter(item => item.name !== "work");
+      return tabbarItems.value.filter((item) => item.name !== "work");
     }
-    
+
     // 登录状态下显示所有tabbar项
     return tabbarItems.value;
   });
