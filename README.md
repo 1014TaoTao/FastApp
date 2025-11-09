@@ -31,17 +31,17 @@ FastApp 是 FastapiAdmin 项目的移动端应用，基于 uni-app 框架开发�
 
 ## 🔗 源码仓库
 
-| 平台       | 仓库地址                                                                                                                                                                                         |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 平台 | 仓库地址 |
+|------|----------|
 | **GitHub** | [FastapiAdmin主工程](https://github.com/1014TaoTao/FastapiAdmin.git) \| [FastDocs官网](https://github.com/1014TaoTao/FastDocs.git) \| [FastApp移动端](https://github.com/1014TaoTao/FastApp.git) |
-| **Gitee**  | [FastapiAdmin主工程](https://gitee.com/tao__tao/FastapiAdmin.git) \| [FastDocs官网](https://gitee.com/tao__tao/FastDocs.git) \| [FastApp移动端](https://gitee.com/tao__tao/FastApp.git)          |
+| **Gitee**  | [FastapiAdmin主工程](https://gitee.com/tao__tao/FastapiAdmin.git) \| [FastDocs官网](https://gitee.com/tao__tao/FastDocs.git) \| [FastApp移动端](https://gitee.com/tao__tao/FastApp.git) |
 
 ## 📸 项目截图
 
-| 模块     | 详情                                                                                       | 模块     | 详情                                                                                   | 模块       | 详情                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------- |
-| **登录** | ![移动端登录](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_login.png)       | **首页** | ![移动端首页](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_home.png)    | **我的**   | ![移动端个人中心](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_mine.png) |
-| **个人** | ![移动端个人信息](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_profile.png) | **设置** | ![移动端设置](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_setting.png) | **工作台** | ![移动端工作台](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_work.png)   |
+| 模块 | 详情 | 模块 | 详情 | 模块 | 详情 |
+|------|------|------|------|------|------|
+| **登录** | ![移动端登录](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_login.png) | **首页** | ![移动端首页](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_home.png) | **我的** | ![移动端个人中心](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_mine.png) |
+| **个人** | ![移动端个人信息](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_profile.png) | **设置** | ![移动端设置](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_setting.png) | **工作台** | ![移动端工作台](https://gitee.com/tao__tao/FastDocs/raw/main/src/public/app_work.png) |
 
 ## ✨ 功能特性
 
@@ -72,13 +72,6 @@ FastApp 是 FastapiAdmin 项目的移动端应用，基于 uni-app 框架开发�
 - **[TypeScript](https://www.typescriptlang.org/)** - JavaScript 的超集，提供类型支持
 - **[Vite](https://cn.vitejs.dev/)** - 下一代前端构建工具
 
-### UI 组件库
-
-- **[wot-design-uni](https://ftf.jd.com/wot-design-uni/)** - 京东风格的 uni-app 组件库
-
-### 状态管理
-
-- **[Pinia](https://pinia.vuejs.org/)** - Vue 官方推荐的状态管理库
 
 ### 工具库
 
@@ -155,34 +148,6 @@ pnpm run dev:h5
 # http://localhost:5180/app
 ```
 
-#### 微信小程序开发
-
-```bash
-# 启动微信小程序开发
-pnpm run dev:mp-weixin
-
-# 使用微信开发者工具打开 dist/dev/mp-weixin 目录
-```
-
-#### 支付宝小程序开发
-
-```bash
-# 启动支付宝小程序开发
-pnpm run dev:mp-alipay
-
-# 使用支付宝开发者工具打开 dist/dev/mp-alipay 目录
-```
-
-#### App 开发
-
-```bash
-# Android 开发
-pnpm run dev:app-android
-
-# iOS 开发（仅 macOS）
-pnpm run dev:app-ios
-```
-
 ### 生产构建
 
 #### H5 构建
@@ -193,40 +158,6 @@ pnpm run build:h5
 # 构建产物在 dist/build/h5 目录
 ```
 
-#### 微信小程序构建
-
-```bash
-pnpm run build:mp-weixin
-
-# 构建产物在 dist/build/mp-weixin 目录
-```
-
-#### App 构建
-
-```bash
-# Android 构建
-pnpm run build:app-android
-
-# iOS 构建
-pnpm run build:app-ios
-```
-
-### 其他平台
-
-项目支持以下所有平台，运行和构建命令格式相同：
-
-- 微信小程序 (`mp-weixin`)
-- 支付宝小程序 (`mp-alipay`)
-- 百度小程序 (`mp-baidu`)
-- 字节跳动小程序 (`mp-toutiao`)
-- QQ 小程序 (`mp-qq`)
-- 快手小程序 (`mp-kuaishou`)
-- 京东小程序 (`mp-jd`)
-- 飞书小程序 (`mp-lark`)
-- 小红书小程序 (`mp-xhs`)
-- 快应用 (`quickapp-webview`)
-- H5 (`h5`)
-- App (`app`)
 
 ## 📝 开发指南
 
@@ -284,16 +215,16 @@ export default defineUniPages({
 使用 Pinia 进行状态管理，store 文件位于 `src/store` 目录：
 
 ```typescript
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore('user', {
   state: () => ({
     // 状态
   }),
   actions: {
     // 方法
-  },
-});
+  }
+})
 ```
 
 ### 样式开发
@@ -374,7 +305,6 @@ proxy: {
 ## 🙏 致谢
 
 - [uni-app](https://uniapp.dcloud.net.cn/) - 跨平台应用开发框架
-- [wot-design-uni](https://ftf.jd.com/wot-design-uni/) - UI 组件库
 - [Vue 3](https://cn.vuejs.org/) - 渐进式 JavaScript 框架
 - [Vite](https://cn.vitejs.dev/) - 下一代前端构建工具
 
